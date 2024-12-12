@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenery Rate Calculation</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><strong>Sarva Conquerors</strong></div>
+        <div class="title">Greenery Rate Calculation</div>
+    </nav>
+
+    <div class="container">
+        <h1>Upload an Image to Calculate the Greenery Rate</h1>
+
+        <div class="upload-area" id="upload-area-greenery">
+            <p>Drag and drop an image here, or click to select one.</p>
+            <form action="/greenery-upload" method="post" enctype="multipart/form-data" id="upload-form">
+                <input type="file" name="file" accept="image/*" id="file-input-greenery" required hidden>
+                <div>
+                    <button type="button" id="upload-button-greenery" class="btn">Choose File</button>
+                    <button type="submit" class="btn">Upload</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Placeholder for showing uploaded image and greenery rate -->
+        <div id="result" style="margin-top: 20px;">
+            {% if uploaded_image_url %}
+                <h2>Uploaded Image:</h2>
+                <img src="{{ uploaded_image_url }}" alt="Uploaded Image" style="max-width: 100%; height: auto;">
+                <h3>Greenery index: {{ greenery_rate }}%</h3>
+            {% endif %}
+        </div>
+
+        <br>
+        <a href="/" class="btn">Go Back</a>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('upload-area-greenery');
+        const fileInput = document.getElementById('file-input-greenery');
+        const uploadButton = document.getElementById('upload-button-greenery');
+        const form = document.getElementById('upload-form');
+
+        // Drag-and-drop functionality
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                form.submit(); // Auto-submit the form on drop
+            }
+        });
+
+        // Manual file selection
+        uploadButton.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                form.submit(); // Auto-submit the form on file selection
+            }
+        });
+    </script>
+</body>
+</html>
+

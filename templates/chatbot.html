@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../static/style.css">
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><strong>Sarva Conquerors</strong></div>
+        <div class="title">SAR Image Colorization</div>
+    </nav>
+    <div class="chat-container">
+        <h2 class="text">SAR Chatbot</h2>
+        <div class="chat-box" id="chat-box">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <div class="mt-3 chat-submit">
+            <input type="text" id="user-input" class="form-control promt" placeholder="Type your question...">
+            <button class="btn send-btn" onclick="sendMessage()">Send</button>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById("chat-box");
+
+        function sendMessage() {
+            const userInput = document.getElementById("user-input");
+            const userMessage = userInput.value.trim();
+
+            if (userMessage === "") return;
+
+            // Display user's message
+            chatBox.innerHTML += `<div class="user-message"><strong>You:</strong> ${userMessage}</div>`;
+
+            // Clear input
+            userInput.value = "";
+
+            // Send question to server
+            fetch("/chatbot/ask", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ question: userMessage })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const botResponse = data.response;
+                    // Display bot's response
+                    chatBox.innerHTML += `<div class="bot-message"><strong>Bot:</strong> ${botResponse}</div>`;
+                    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+                })
+                .catch(error => {
+                    chatBox.innerHTML += `<div class="bot-message"><strong>Bot:</strong> Sorry, there was an error processing your request.</div>`;
+                });
+        }
+    </script>
+</body>
+</html>

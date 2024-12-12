@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+    --clr-rose: #e11d48;
+    --clr-dark: #070a13;
+    --clr-light: #f1f5f9;
+    --clr-slate400: #94a3b8;
+    --clr-slate600: #475569;
+    --clr-slate800: #1e293b;
+    --clr-indigo: #4f46e5;
+}
+
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    line-height: calc(1em + 0.5rem);
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'General Sans', sans-serif;
+    color: var(--clr-light);
+    background-color: var(--clr-dark);
+    /* margin: 0; */
+    /* padding: 0; */
+
+}
+
+button {
+    padding: 0.35em;
+    cursor: pointer;
+    color: inherit;
+    border: none;
+    display: inline-block;
+}
+
+strong {
+    color: var(--clr-indigo);
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: -0.05em;
+    background-color: var(--clr-rose);
+    color: var(--clr-light);
+    padding: 0.5em 1em;
+    border-radius: 6px;
+    box-shadow: 0 10px 20px rgba(225, 29, 72, 0.5),
+      0 6px 6px rgba(225, 29, 72, 0.5), 0 0 100px -10px var(--clr-rose);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(225, 29, 72, 0.25),
+        0 10px 10px rgba(225, 29, 72, 0.22), 0 0 120px -10px var(--clr-rose);
+}
+
+.navbar {
+    margin: 1em;
+    padding: 0.2em;
+    font-weight: 900;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* position: relative; */
+    padding-bottom: 1.2em;
+    /* z-index: 9999; */
+}
+
+.logo {
+    font-weight: bold;
+
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* min-height: 100vh; */
+    /* padding: 20px; */
+}
+
+/* Upload Area */
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    border: 2px dashed var(--clr-slate400);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center; 
+    width: 400px;
+    background-color: var(--clr-slate800);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100vh;
+}
+
+.upload-area.dragover {
+    background-color: var(--clr-slate800);
+}
+
+.upload-area {
+    margin: 0;
+    color: var(--clr-light);
+}
+
+.images {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: center;
+}
+
+.idx-text {
+    font-size: 2rem;
+}
+
+.hero {
+    display: flex;
+    /* justify-content: space-evenly; */
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+img {
+    max-height: 80vh;
+    max-width: 80vh;
+    min-height: 80vh;
+    min-width: 80vh;
+}
+
+
+.chat-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: var(--clr-slate800);
+    border-radius: 10px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    padding: 20px;
+}
+.chat-box {
+    border: 1px solid var(--clr-light);
+    /* border-radius: 10px; */
+    padding: 10px;
+    height: 300px;  
+    overflow-y: scroll;
+}
+
+.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promt {
+    padding: 1.2rem;
+    border-radius: 1rem;
+
+}
+
+.promt {
+    padding: 1.2rem;
+    border-radius: 1rem;
+    width: 80%; /* Reduce the width to 80% of the container */
+    max-width: 500px; /* Set a smaller max-width */
+}
+
+.promt input, .promt textarea {
+    width: 100%; /* Make the input or textarea take full width of its container */
+    padding: 0.6rem; /* Optional: Adjust padding to suit the design */
+    border: 1px solid var(--clr-slate400); /* Optional: Add border style */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    background-color: var(--clr-slate800); /* Match background color */
+    color: var(--clr-light); /* Match text color */
+    font-size: 1rem; /* Optional: Adjust font size */
+}
+
+.send-btn {
+    padding: 1.1rem;
+}
+
+.user-message {
+    text-align: right;
+    margin-bottom: 10px;
+}
+.bot-message {
+    text-align: left;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorized SAR Image</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><strong>Sarva Conquerors</strong></div>
+        <div class="title">SAR Image Colorization</div>
+    </nav>
+
+    <div class="container result">
+        <br>
+        <div class="images">
+            <div class="image">
+                <h2>Uploaded Image</h2>
+                <img src="{{ uploaded_image_url }}" alt="Uploaded SAR Image" class="img">
+            </div>
+            <div class="image">
+                <h2>Colorized Image</h2>
+                <img src="{{ colorized_image_url }}" alt="Colorized Optical Image" class="img">
+            </div>
+        </div>
+        <br>
+        <h2 class="idx-text">Greenery index: <strong>{{ greenery_rate }}</strong></h2>
+        <a href="/" class="btn">Go Back</a>
+        <br>
+        <br>
+    </div>
+    
+    </div>
+</body>
+</html>
+
+
