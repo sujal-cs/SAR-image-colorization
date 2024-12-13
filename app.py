@@ -94,7 +94,7 @@ class Generator(nn.Module):
 
 # Initialize the Generator
 G1 = Generator(input_nc=1, output_nc=3).to(device)
-G1.load_state_dict(torch.load(r"weights\best_G1.pth", map_location=torch.device('cpu')))
+G1.load_state_dict(torch.load(os.path.join("weights", "best_G1.pth"), map_location=torch.device('cpu')))
 G1.eval()
 
 
