@@ -15,7 +15,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Device configuration
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = "cpu"
 
 # Attention Mechanism
 class AttentionBlock(nn.Module):
@@ -94,7 +94,7 @@ class Generator(nn.Module):
 
 # Initialize the Generator
 G1 = Generator(input_nc=1, output_nc=3).to(device)
-G1.load_state_dict(torch.load(r"weights\best_G1.pth"))
+G1.load_state_dict(torch.load(r"weights\best_G1.pth", map_location=torch.device('cpu')))
 G1.eval()
 
 
